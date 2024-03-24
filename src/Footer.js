@@ -9,6 +9,8 @@ const FooterContainer = styled.footer`
   font-family: 'Jost', sans-serif;
   color: rgb(var(--background-color));
   padding: 20px;
+  height: 15rem;
+  margin-top: 5rem;
   text-align: right;
 `;
 
