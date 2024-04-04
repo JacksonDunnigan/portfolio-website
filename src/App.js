@@ -1,11 +1,9 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './Home';
-import Modelling from './Modelling';
-import Paintings from './Paintings';
-import Events from './Events';
-import Spacer from './Spacer';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Exhibitions from './pages/Exhibitions';
 
 import './styles.css';
 import './App.css';
@@ -15,11 +13,11 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route exact path='/' element={<Home/>} />
-          <Route exact path='/home' element={<Home/>} />
-          <Route path="/3d" element={<Modelling />} />
-          <Route path="/paintings" element={<Paintings />} />
-          <Route path="/events" element={<Events />} />
+          <Route exact path='/' element={<Projects/>} />
+          <Route exact path='/projects' element={<Projects/>} />
+          <Route path="/exhibitions" element={<Exhibitions />} />
+          <Route path="/about" element={<About />} />
+
         </Routes>
       </div>
     </Router>

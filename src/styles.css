@@ -4,7 +4,7 @@
   --primary-color: 33, 33, 33; 
   --secondary-color: 243, 223, 200;
   --third-color: rgb(214, 240, 185); 
-  --fourth-color: #f97667; 
+  --fourth-color: 249, 118, 103; 
   --text-color: #fff; 
   --link-hover-color: #555;
   --navbar-height: 30rem; 
@@ -36,23 +36,16 @@ h2{
 
 a{
   font-family: 'Jost', sans-serif;
-  color: var(--background-color);
-  font-weight: 500;
-  
   padding: .5rem;
   margin-left: .25rem;
   text-align: left;
   font-optical-sizing: auto;
-  font-size: 1.25rem;
   text-transform: uppercase;
-
 }
 
 body{
   background-color: var(--background-color);
 }
-
-
 
 /* 
 Adorn Garland Regular
