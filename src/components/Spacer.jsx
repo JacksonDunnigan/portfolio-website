@@ -7,7 +7,7 @@ const BlankSpacer = styled.div`
   gap: 1rem;
   padding: 1rem;
   width: 100%;
-  height: 15rem; 
+  height: 12.5rem; 
 `;
 
 const Spacer = () => {

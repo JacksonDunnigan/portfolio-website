@@ -21,7 +21,7 @@ const NavbarBackground = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  width: 11%;
+  width: 10%;
   background-color: rgb(var(--primary-color));
 `;
 
@@ -62,11 +62,11 @@ const HotbarLink = styled(NavLink)`
 
 const LogoContainer = styled.div`
   position: absolute;
-  left: .5rem;
+  left: .75rem;
   top: -.75rem;
   max-width: 14rem;
   transition: max-width 0.3s ease;
-  z-index: 2;
+  z-index: 999;
   pointer-events: none;
 `;
 
@@ -86,17 +86,17 @@ const TextContainer = styled.div`
 `;
 
 const Navbar = () => {
-  const [navWidth, setNavWidth] = useState('12rem');
-  const [fontSize, setFontSize] = useState('.95rem');
+  const [navWidth, setNavWidth] = useState('14rem');
+  const [fontSize, setFontSize] = useState('.9rem');
   const [marginTop, setMarginTop] = useState('1rem');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
-      const newNavWidth = scrollTop === 0 ? '12rem' : '9rem';
+      const newNavWidth = scrollTop === 0 ? '14rem' : '9rem';
       setNavWidth(newNavWidth);
 
-      const newFontSize = scrollTop === 0 ? '.95rem' : '0.8rem';
+      const newFontSize = scrollTop === 0 ? '.9rem' : '0.75rem';
       setFontSize(newFontSize);
 
       const newMarginTop = scrollTop === 0 ? '1rem' : '0.5rem';

@@ -6,6 +6,7 @@ import Content from '../components/Content';
 import Footer from '../components/Footer';
 import { Header, SubHeading, Paragraph } from '../components/TextComponents';
 import Spacer from '../components/Spacer';
+import Name from "../components/Name"
 
 // Styled components for Header and Paragraph
 // (These styles were provided in your previous snippet)
@@ -49,6 +50,7 @@ const Home = () => {
     <div style={{ overflowX: 'hidden' }}>
       <Background />
       <Navbar />
+      <Name />
       <Spacer />
       <Content align="left">
         <Header>About</Header>
@@ -59,8 +61,8 @@ const Home = () => {
         </Paragraph>
       </Content>
 
-      <Content align="right">
-        <Header align="right">CV</Header>
+      <Content align="left">
+        <Header align="left">CV</Header>
         <Paragraph>
           <SubHeading>Professional Experience</SubHeading>
           <List>

@@ -5,7 +5,7 @@ import "../styles.css";
 const OuterContainer = styled.div`
   position: sticky;
   top: 0;
-  z-index: 1;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -84,14 +84,15 @@ const VideoPlayer = styled.video`
 const FilterButtonsOuterContainer = styled.div`
   position: sticky;
   top: 0;
-  z-index: 1;
+  margin-bottom: 2rem;
+  z-index: 5;
 `;
 
 const FilterButtonsContainer = styled.div`
   margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 const FilterButton = styled.button`
@@ -161,8 +162,11 @@ const Artworks = () => {
       <FilterButtonsOuterContainer>
         <FilterButtonsContainer>
           <FilterButton onClick={() => sortByCategory('All')} className={selectedCategory === 'All' ? 'active' : ''}>All</FilterButton>
+          <a>|</a>
           <FilterButton onClick={() => sortByCategory('paintings')} className={selectedCategory === 'paintings' ? 'active' : ''}>Paintings</FilterButton>
+          <a>|</a>
           <FilterButton onClick={() => sortByCategory('3d modelling')} className={selectedCategory === '3d modelling' ? 'active' : ''}>3D Modelling</FilterButton>
+          <a>|</a>
           <FilterButton onClick={() => sortByCategory('one-offs')} className={selectedCategory === 'one-offs' ? 'active' : ''}>One-Offs</FilterButton>
         </FilterButtonsContainer>
       </FilterButtonsOuterContainer>
