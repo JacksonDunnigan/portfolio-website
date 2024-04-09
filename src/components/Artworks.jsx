@@ -6,46 +6,54 @@ const OuterContainer = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 9999;
 `;
 
 const Container = styled.div`
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 `;
 
 const ArtworksContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem; /* Adjust the gap between items */
+  gap: 1rem;
 `;
 
 const ArtworkCard = styled.div`
-  flex-basis: calc(33% - 1rem); /* Adjusted to ensure three columns with a 1rem gap */
+  flex-basis: calc(33% - 1rem);
   cursor: pointer;
-  transition: all 0.3s ease; /* Add transition for smoother effect */
+  transition: all 0.3s ease;
   overflow: hidden;
-  margin-bottom: 1rem; /* Add some bottom margin to create space between rows */
-  position: relative; /* Needed for absolutely positioned child elements */
+  margin-bottom: 1rem;
+  position: relative;
 
   &:hover {
-    transform: scale(1.05); /* Increase size on hover */
+    transform: scale(1.05);
   }
 `;
 
 const ArtworkImage = styled.img`
-  width: 100%; /* Ensure image fills the container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
 `;
 
 const ArtworkTitle = styled.h3`
-  margin: 5px 0; /* Adjust the margin */
-  font-size: 16px; /* Increase font size */
+  margin: 5px 0;
+  font-size: 16px;
 `;
 
 const ArtworkYear = styled.p`
-  margin: 0; /* Reset margin */
-  font-size: 14px; /* Adjust font size */
+  margin: 0;
+  font-size: 14px;
   font-family: "eb-garamond", serif;
   font-style: italic;
+`;
+
+const ArtworkDescription = styled.p`
+  margin: 0;
+  font-size: 16px;
+  font-family: "eb-garamond", serif;
+
 `;
 
 const ModalBackground = styled.div`
@@ -58,27 +66,55 @@ const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 `;
 
 const ModalContent = styled.div`
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  max-width: 60vw; /* Adjusted maximum width */
-  max-height: 80vh;
+  max-width: 50%;
+  max-height: 85%;
   overflow: auto;
+  z-index: 100000;
+  position: relative;
 `;
 
 const ModalImage = styled.img`
-  max-width: 100%; /* Limit image width to prevent overflow */
-  height: auto; /* Limit image height to prevent overflow */
+  max-width: ${({ portrait }) => (portrait ? 'auto' : '50%')};
+  max-height: ${({ portrait }) => (portrait ? '50%' : '75%')};
   display: block;
-  margin: auto; /* Center the image */
+  margin: auto;
+`;
+
+const ImageNavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: black;
+  z-index: 10;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: gray;
+  }
+`;
+
+const BackButton = styled(ImageNavigationButton)`
+  left: 0;
+`;
+
+const NextButton = styled(ImageNavigationButton)`
+  right: 0;
 `;
 
 const VideoPlayer = styled.video`
-  width: 100%; /* Ensure video fills the container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
 `;
 
 const FilterButtonsOuterContainer = styled.div`
@@ -119,6 +155,7 @@ const Artworks = () => {
   const [artworks, setArtworks] = useState([]);
   const [originalArtworks, setOriginalArtworks] = useState([]);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState({});
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
@@ -128,6 +165,12 @@ const Artworks = () => {
       .then(data => {
         setArtworks(data);
         setOriginalArtworks(data);
+        // Initialize selected image index for each artwork
+        const initialSelectedImageIndex = {};
+        data.forEach(artwork => {
+          initialSelectedImageIndex[artwork.id] = 0;
+        });
+        setSelectedImageIndex(initialSelectedImageIndex);
       })
       .catch(error => console.error('Error fetching artworks:', error));
   }, []);
@@ -157,48 +200,79 @@ const Artworks = () => {
     setSelectedArtwork(null); // Reset selected artwork when filtering categories
   };
 
+  const nextImage = () => {
+    setSelectedImageIndex(prevIndex => ({
+      ...prevIndex,
+      [selectedArtwork.id]: (prevIndex[selectedArtwork.id] + 1) % selectedArtwork.source.length
+    }));
+  };
+
+  const prevImage = () => {
+    setSelectedImageIndex(prevIndex => ({
+      ...prevIndex,
+      [selectedArtwork.id]: prevIndex[selectedArtwork.id] === 0 ? selectedArtwork.source.length - 1 : prevIndex[selectedArtwork.id] - 1
+    }));
+  };
+
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <OuterContainer>
       <FilterButtonsOuterContainer>
         <FilterButtonsContainer>
           <FilterButton onClick={() => sortByCategory('All')} className={selectedCategory === 'All' ? 'active' : ''}>All</FilterButton>
           <a>|</a>
-          <FilterButton onClick={() => sortByCategory('paintings')} className={selectedCategory === 'paintings' ? 'active' : ''}>Paintings</FilterButton>
-          <a>|</a>
           <FilterButton onClick={() => sortByCategory('3d modelling')} className={selectedCategory === '3d modelling' ? 'active' : ''}>3D Modelling</FilterButton>
+          <a>|</a>
+          <FilterButton onClick={() => sortByCategory('paintings')} className={selectedCategory === 'paintings' ? 'active' : ''}>Paintings</FilterButton>
           <a>|</a>
           <FilterButton onClick={() => sortByCategory('one-offs')} className={selectedCategory === 'one-offs' ? 'active' : ''}>One-Offs</FilterButton>
         </FilterButtonsContainer>
       </FilterButtonsOuterContainer>
       <Container>
-        <ArtworksContainer>
-          {artworks.map((artwork, index) => (
-            <ArtworkCard
-              key={index}
-              onClick={() => openModal(artwork)}
-              portrait={artwork.type === 'video' && artwork.aspectRatio <= 1}
-            >
-              {artwork.type === 'image' && <ArtworkImage src={`/images/${artwork.source}`} alt={artwork.title} />}
-              {artwork.type === 'video' && <VideoPlayer controls autoPlay muted loop key={artwork.source}><source src={`/videos/${artwork.source}`} type="video/mp4" />Your browser does not support the video tag.</VideoPlayer>}
-              <ArtworkTitle>{artwork.title}</ArtworkTitle>
-              <ArtworkYear>{artwork.year}</ArtworkYear>
-            </ArtworkCard>
-          ))}
-        </ArtworksContainer>
+      <ArtworksContainer>
+        {artworks.map((artwork) => (
+          <ArtworkCard
+            key={artwork.title}
+            onClick={() => openModal(artwork)}
+          >
+            {artwork.type === 'image' && <ArtworkImage src={`/images/${artwork.source[0]}`} alt={artwork.title} />}
+            {artwork.type === 'video' && <VideoPlayer controls autoPlay loop muted><source src={`/videos/${artwork.source}`} type="video/mp4" />Your browser does not support the video tag.</VideoPlayer>}
+            <ArtworkTitle>{artwork.title}</ArtworkTitle>
+            <ArtworkDescription>{artwork.description}</ArtworkDescription>
+            <ArtworkYear>{artwork.year}</ArtworkYear>
+          </ArtworkCard>
+        ))}
+      </ArtworksContainer>
+
+
 
         {selectedArtwork && (
           <ModalBackground onClick={closeModal}>
-            <ModalContent>
-              {selectedArtwork.type === 'image' && (
-                <ModalImage src={`/images/${selectedArtwork.source}`} alt={selectedArtwork.title} />
+            <ModalContent onClick={stopPropagation}>
+              {selectedArtwork.source.length > 1 && (
+                <BackButton onClick={prevImage}>{'<'}</BackButton>
+              )}
+              <ModalImage src={`/images/${selectedArtwork.source[selectedImageIndex[selectedArtwork.id]]}`} alt={selectedArtwork.title} portrait={selectedArtwork.aspectRatio <= 1} onClick={nextImage} />
+              {selectedArtwork.source.length > 1 && (
+                <NextButton onClick={nextImage}>{'>'}</NextButton>
               )}
               {selectedArtwork.type === 'video' && (
-                <VideoPlayer controls autoPlay muted loop>
-                  <source src={`/videos/${selectedArtwork.source}`} type="video/mp4" />
+                <VideoPlayer controls autoPlay loop muted>
+                  {Array.isArray(selectedArtwork.source) ? (
+                    selectedArtwork.source.map((src, index) => (
+                      <source key={index} src={`/videos/${src}`} type="video/mp4" />
+                    ))
+                  ) : (
+                    <source src={`/videos/${selectedArtwork.source}`} type="video/mp4" />
+                  )}
                   Your browser does not support the video tag.
                 </VideoPlayer>
               )}
               <ArtworkTitle>{selectedArtwork.title}</ArtworkTitle>
+              <ArtworkDescription>{selectedArtwork.description}</ArtworkDescription>
               <ArtworkYear>{selectedArtwork.year}</ArtworkYear>
             </ModalContent>
           </ModalBackground>

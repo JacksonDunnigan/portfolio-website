@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const rotationDuration = '20s';
+const rotationDuration = '5s';
 const hoverDuration = '0.3s';
 
 const easeIn = 'cubic-bezier(0.32, 0, 0.67, 0)';
@@ -29,8 +29,8 @@ const Link = styled.a`
 `;
 
 const SVG = styled.svg`
-  width: 200px;
-  height: 200px;
+  width: 15rem;
+  height: 15rem;
 `;
 
 const Path = styled.path`
@@ -43,13 +43,6 @@ const Circle = styled.circle`
   fill: none;
 `;
 
-const Cloud = styled.path`
-  fill: rgba(255, 255, 255, 0.15);
-`;
-
-const Arrow = styled.path`
-  fill: none;
-`;
 
 const Face = styled.g`
   transition: transform ${hoverDuration} / 2 ${easeIn};
@@ -66,7 +59,7 @@ const Text = styled.text`
   transform-origin: 50% 50%;
 
   ${Link}:hover & {
-    animation-play-state: paused;
+    
   }
 `;
 

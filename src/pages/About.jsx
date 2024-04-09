@@ -61,10 +61,9 @@ const Home = () => {
         </Paragraph>
       </Content>
 
-      <Content align="left">
-        <Header align="left">CV</Header>
+      <Content align="right">
+        <Header align="left">Experience</Header>
         <Paragraph>
-          <SubHeading>Professional Experience</SubHeading>
           <List>
             <ExperienceItem>
               <JobTitle>Graphics Editor: The Sophia Review Philosophy Journal</JobTitle>
@@ -85,12 +84,18 @@ const Home = () => {
             </ExperienceItem>
             {/* Add more professional experiences as needed */}
           </List>
+        </ Paragraph>
+      </ Content>
+      <Content align = "left">
+        <Paragraph>
+        <Header>Skills</Header>
           <FlexContainer>
             <FlexItem>
-              <SubHeading>Professional Skills</SubHeading>
+              <SubHeading>Professional</SubHeading>
               <List>
-                <li>3D modelling/Animation</li>
-                <li>Front/Back End Web Development</li>
+                <li>3d Modelling</li>
+                <li>Animation</li>
+                <li>Web Development</li>
                 <li>Graphic Design</li>
                 <li>Sound Design</li>
                 <li>UI and UX</li>
@@ -99,7 +104,7 @@ const Home = () => {
               </List>
             </FlexItem>
             <FlexItem>
-              <SubHeading>Technical Skills</SubHeading>
+              <SubHeading>Technical</SubHeading>
               <List>
                 <li>Adobe Suite</li>
                 <li>HTML/CSS</li>
@@ -118,7 +123,7 @@ const Home = () => {
         </Paragraph>
       </Content>
 
-      <Content align="left">
+      <Content align="right">
         <Header>Contact</Header>
         <Paragraph>
           contact@jacksondunnigan.ca <br />

@@ -1,99 +1,154 @@
 [
-    {
-      "type": "image",
-      "source": "ABaoaS.jpg",
-      "title": "A Boat and/or a Stump",
-      "year": 2022,
-      "category": "paintings"
-    },
-    {
-      "type": "image",
-      "source": "AtR.jpg",
-      "title": "Addicted to Revelations",
-      "year": 2022,
-      "category": "paintings"
-    },
-    {
-      "type": "image",
-      "source": "BiDiB.jpg",
-      "title": "Bitterness in Detail in Bitterness",
-      "year": 2022,
-      "category": "paintings"
-    },
-    {
-      "type": "image",
-      "source": "CL.jpg",
-      "title": "Chopstick Lessons",
-      "year": 2023,
-      "category": "paintings"
-    },
-    {
-      "type": "image",
-      "source": "FoMoaH.jpg",
-      "title": "First of March on a Haystack",
-      "year": 2023,
-      "category": "paintings"},
-    {
-      "type": "image",
-      "source": "LBB.jpg",
-      "title": "Little Brown Boxes",
-      "year": 2021,
-      "category": "paintings"
-    },
-    {
-      "type": "image",
-      "source": "LBN.jpg",
-      "title": "Lotta Brain Noise",
-      "year": 2021,
-      "category": "paintings"},
-    {
-      "type": "image",
-      "source": "OAiYBD.jpg",
-      "title": "Okay Albert, it's Yer Big Day",
-      "year": 2023,
-      "category": "paintings"},
-    {
-      "type": "image",
-      "source": "SJaBM.jpg",
-      "title": "She's Just a Burning Memory",
-      "year": 2020,
-      "category": "paintings"},
-    {
-      "type": "image",
-      "source": "SYT.jpg",
-      "title": "Splatter Yet Together",
-      "year": 2022,
-      "category": "paintings"},
-    {
-      "type": "video",
-      "source": "EC.mp4",
-      "title": "Extensive Carrots!",
-      "year": 2024,
-      "category": "3d modelling"},
-    {
-      "type": "video",
-      "source": "CWWC.mp4",
-      "title": "Catfish Willy Walk Cycle",
-      "year": 2022,
-      "category": "3d modelling"},
-    {
-      "type": "video",
-      "source": "INYLS.mp4",
-      "title": "I'm Not Your Lump Sum",
-      "year": 2023,
-      "category": "one-offs"},
-    {
-      "type": "video",
-      "source": "LMoP.mp4",
-      "title": "Lampshades Made of Plastic: Pt.1",
-      "year": 2023,
-      "category": "one-offs"},
-    {
-      "type": "video",
-      "source": "LPD.mp4",
-      "title": "Low Poly Diorama",
-      "year": 2022,
-      "category": "3d modelling"}
-      
-  ]
-  
+  {
+    "type": "image",
+    "source": ["ABaoaS.jpg"],
+    "title": "A Boat and/or a Stump",
+    "year": 2022,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["AtR.jpg"],
+    "title": "Addicted to Revelations",
+    "year": 2022,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["BiDiB.jpg"],
+    "title": "Bitterness in Detail in Bitterness",
+    "year": 2022,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["CL.jpg"],
+    "title": "Chopstick Lessons",
+    "year": 2023,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["FoMoaH.jpg"],
+    "title": "First of March on a Haystack",
+    "year": 2023,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["LBB.jpg"],
+    "title": "Little Brown Boxes",
+    "year": 2021,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["LBN.jpg"],
+    "title": "Lotta Brain Noise",
+    "year": 2021,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["HCA.jpg"],
+    "title": "Healthy Cheese Alternatives",
+    "year": 2021,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["OAiYBD.jpg"],
+    "title": "Okay Albert, it's Yer Big Day",
+    "year": 2023,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["SJaBM.jpg"],
+    "title": "She's Just a Burning Memory",
+    "year": 2020,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["SYT.jpg"],
+    "title": "Splatter Yet Together",
+    "year": 2022,
+    "description": "oil on canvas",
+    "category": "paintings"
+  },
+  {
+    "type": "image",
+    "source": ["TitB1.png","TitB2.png","TitB3.png"],
+    "title": "Tint in the Beam",
+    "year": 2024,
+    "description": "3d model created in blender",
+    "category": "3d modelling"
+  },
+  {
+    "type": "image",
+    "source": ["TGMM1.png","TGMM2.png"],
+    "title": "Towers Give Me Meaning!",
+    "year": 2022,
+    "description": "collection of mixed media art",
+    "category": "one-offs"
+  },
+  {
+    "type": "image",
+    "source": ["LMoPB2.JPG", "LMoPB1.png"],
+    "title": "Lampshades Made of Plastic Poetry Collection",
+    "year": 2024,
+    "description": "collection of original poetry",
+    "category": "one-offs"
+  },
+  {
+    "type": "video",
+    "source": ["EC.mp4"],
+    "title": "Extensive Carrots!",
+    "year": 2024,
+    "description": "3d animation created in blender and premiere pro",
+    "category": "3d modelling"
+  },
+  {
+    "type": "video",
+    "source": ["CWWC.mp4"],
+    "title": "Character Walk Cycle",
+    "year": 2022,
+    "description": "3d model created in blender",
+    "category": "3d modelling"
+  },
+  {
+    "type": "video",
+    "source": ["INYLS.mp4"],
+    "title": "I'm Not Your Lump Sum",
+    "description": "interactive poetry created in premiere pro and after effects",
+    "year": 2023,
+    "category": "one-offs"
+  },
+  {
+    "type": "video",
+    "source": ["LMoP.mp4"],
+    "title": "Lampshades Made of Plastic: Pt.1",
+    "description": "interactive poetry created in premiere pro and after effects",
+    "year": 2023,
+    "category": "one-offs"
+  },
+  {
+    "type": "video",
+    "source": ["LPD.mp4"],
+    "title": "Low Poly Diorama",
+    "year": 2022,
+    "description": "3d model created in blender",
+    "category": "3d modelling"
+  }
+]

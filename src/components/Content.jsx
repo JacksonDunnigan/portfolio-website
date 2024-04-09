@@ -4,7 +4,7 @@ const Container = styled.div`
   padding: 2rem;
   
   ${({ align }) => align === 'left' && css`
-    margin-left: 7.5%;
+    margin-left: 9%;
     margin-right: auto; /* Center the container */
     width: 50%; /* Minimum width to ensure content visibility */
 

@@ -119,10 +119,10 @@ const Navbar = () => {
       <TextContainer>
         <Hotbar>
           <HotbarItem marginTop={marginTop} fontSize={fontSize}>
-            <HotbarLink to="/projects">Projects</HotbarLink>
+            <HotbarLink to="/featured">Featured</HotbarLink>
           </HotbarItem>
           <HotbarItem marginTop={marginTop} fontSize={fontSize}>
-            <HotbarLink to="/exhibitions">Exhibitions</HotbarLink>
+            <HotbarLink to="/projects">Projects</HotbarLink>
           </HotbarItem>
           <HotbarItem marginTop={marginTop} fontSize={fontSize}>
             <HotbarLink to="/about" className="alt-hover">About</HotbarLink>
